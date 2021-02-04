@@ -5,7 +5,7 @@ const connUri = process.env.MONGO_LOCAL_CONN_URL;
 
 module.exports = {
   add: (req, res) => {
-    mongoose.connect(connUri, { useNewUrlParser: true }, (err) => {
+    mongoose.connect(connUri, { useNewUrlParser: true, useUnifiedTopology: true }, (err) => {
       let result = {};
       let status = 201;
       if (!err) {
