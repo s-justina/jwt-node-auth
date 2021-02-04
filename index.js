@@ -3,6 +3,7 @@ require('dotenv').config(); // Sets up dotenv as soon as our application starts
 const express = require('express');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
+const routes = require('./routes/index.js');
 
 const app = express();
 const router = express.Router();
@@ -14,6 +15,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true
 }));
+app.use('/api/v1', routes(router));
 
 if (environment !== 'production') {
     app.use(logger('dev'));
